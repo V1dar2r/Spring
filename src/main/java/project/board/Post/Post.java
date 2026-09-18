@@ -3,12 +3,22 @@ package project.board.Post;
 public class Post {
     private Long id;
     private String title;
-    private String Content;
+    private String content;
+    private String password;
 
-    public Post(Long id, String title, String content) {
+    public Post(Long id, String title, String content,String password) {
         this.title = title;
         this.id = id;
-        this.Content = content;
+        this.content = content;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getId() {
@@ -28,10 +38,10 @@ public class Post {
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
     public void setContent(String content) {
-        Content = content;
+        content = content;
     }
 }

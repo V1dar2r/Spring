@@ -1,27 +1,7 @@
 package project.board.Post;
 
-public class PostCreateRequest {
-    private String title;
-    private String content;
-
-    public PostCreateRequest(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+public record PostCreateRequest (String title, String content, String password){
+    public static PostCreateRequest from (Post post){
+        return new PostCreateRequest(post.getTitle(),post.getContent(), post.getPassword());
     }
 }

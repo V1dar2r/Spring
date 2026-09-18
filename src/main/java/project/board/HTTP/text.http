@@ -3,5 +3,6 @@ Content-Type: application/json
 
 {
   "title" : "안녕하세요",
-  "content" : "아니요"
+  "content" : "그게 맞을까?",
+  "password" : "비밀번호 아닌데"
 }

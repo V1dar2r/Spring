@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import project.board.Post.Post;
 import project.board.Post.PostCreateRequest;
 import project.board.Post.PostRecord;
+import project.board.Post.PostResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,20 +17,21 @@ public class PostController {
     private Long nextId = 1L;
 
     @PostMapping("/posts")
-    public Post create(@RequestBody PostCreateRequest request){
+    public PostResponse create(@RequestBody PostCreateRequest request){
         Long id = nextId++;
-        Post result = new Post(id,request.getTitle(),request.getContent());
+        Post result = new Post(id,request.title(),request.content(),request.password());
         store.put(id,result);
-        return result;
+        return PostResponse.from(result);
     }
     @GetMapping("/posts")
-    public List<Post> findAll(){
-        return new ArrayList<>(store.values());
+    public List<PostResponse> findAll(){
+        return store.values().stream().map(PostResponse::from).toList();
     }
 
     @GetMapping("/posts/{id}")
-    public Post findOne(@PathVariable Long id){
-        return store.get(id);
+    public PostResponse findOne(@PathVariable Long id){
+        Post post = store.get(id);
+        return PostResponse.from(post);
     }
 
 
