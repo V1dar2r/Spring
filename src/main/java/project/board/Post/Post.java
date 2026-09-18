@@ -13,6 +13,12 @@ public class Post {
         this.password = password;
     }
 
+    public Post(String title, String content, String password) {
+        this.title = title;
+        this.content = content;
+        this.password = password;
+    }
+
     public String getPassword() {
         return password;
     }
