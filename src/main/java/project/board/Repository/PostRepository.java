@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Optional;
 
 public interface PostRepository {
-
     public Post save(Post post);
     public Optional<Post> findById(Long id);
     public List<Post> findAll();
